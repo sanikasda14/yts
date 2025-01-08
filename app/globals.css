@@ -1,0 +1,438 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+  /* For Firefox */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-bg {
+  background-image: url("/hero.webp");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.RamadanHero {
+  background-image: url("/ramadan/ramadan-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* Full viewport height */
+  position: relative;
+  background-attachment: fixed;
+  /* Enables parallax scrolling */
+}
+
+.AboutHero {
+  background-image: url("/AboutUs/about.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* Full viewport height */
+  position: relative;
+  background-attachment: fixed;
+  /* Enables parallax scrolling */
+}
+
+.catalyst-bg {
+  background-image: url("/catalyst.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  /* Full viewport height */
+  position: relative;
+  background-attachment: fixed;
+  /* Enables parallax scrolling */
+}
+
+.chooseUs-bg {
+  background-image: url("/chooseUs.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  /* Full viewport height */
+  position: relative;
+  background-attachment: fixed;
+  /* Enables parallax scrolling */
+}
+
+.pack-bg {
+  background-image: url("/pack-bg.jpg");
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  height: auto;
+  /* Full viewport height */
+  position: relative;
+  background-attachment: fixed;
+  /* Enables parallax scrolling */
+}
+
+@media (max-width: 768px) {
+  .catalyst-bg {
+    background-position: 60%;
+    /* Adjust focus to the right */
+    background-attachment: scroll;
+    /* Disable parallax on smaller screens */
+  }
+
+  .AboutHero {
+    background-attachment: scroll;
+    /* Disable parallax on smaller screens */
+  }
+
+  .hero-bg {
+    background-position: 35%;
+  }
+
+  .chooseUs-bg {
+    background-attachment: scroll;
+  }
+
+  .pack-bg {
+    background-attachment: scroll;
+  }
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/font/Montserrat-VariableFont.ttf") format("truetype");
+  font-weight: 100 900;
+  /* Range of font weights */
+  font-style: normal;
+  font-display: swap;
+  /* Ensures font loads quickly */
+}
+
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("/font/AbrilFatface-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fade-in {
+  opacity: 0;
+  /* Hidden initially */
+  transform: translateY(50px);
+  /* Starts slightly below its final position */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  /* Smooth animation */
+}
+
+.fade-in.show {
+  opacity: 1;
+  /* Fully visible */
+  transform: translateY(0);
+  /* Moves to its original position */
+}
+
+.fade-side {
+  opacity: 0;
+  /* Hidden initially */
+  transform: translateX(-50px);
+  /* Starts from the right ( X direction) */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  /* Smooth animation */
+}
+
+.fade-side.show {
+  opacity: 1;
+  /* Fully visible */
+  transform: translateX(0);
+  /* Moves to its original position */
+}
+
+.show-color {
+  filter: grayscale(100%);
+  transition: filter 0.8s ease-out;
+}
+
+.show-color.show {
+  filter: grayscale(0);
+}
+
+.precautions-opacity {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.precautions-opacity.show {
+  opacity: 1;
+  /* Fully visible */
+}
+
+@keyframes opacity-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-opacity-in {
+  animation: opacity-in 0.5s ease-in-out;
+}
+
+.feature-box {
+  position: relative;
+  padding: 7px;
+  overflow: hidden;
+}
+
+.feature-box::before,
+.feature-box::after,
+.feature-box span::before,
+.feature-box span::after {
+  content: "";
+  position: absolute;
+  background-color: var(--base-color, #b78738) !important;
+  /* Border color */
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Bottom and left borders */
+.feature-box::before {
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  /* Start from the bottom-left corner */
+  transform-origin: left;
+  /* Expand away to the right */
+}
+
+.feature-box::after {
+  height: 100%;
+  width: 3px;
+  bottom: 0;
+  left: 0;
+  transform: scaleY(0);
+  /* Start from the bottom-left corner */
+  transform-origin: bottom;
+  /* Expand away to the top */
+}
+
+/* Top and right borders */
+.feature-box span::before {
+  height: 3px;
+  width: 100%;
+  top: 0;
+  right: 0;
+  transform: scaleX(0);
+  /* Start from the top-right corner */
+  transform-origin: right;
+  /* Expand away to the left */
+}
+
+.feature-box span::after {
+  height: 100%;
+  width: 3px;
+  top: 0;
+  right: 0;
+  transform: scaleY(0);
+  /* Start from the top-right corner */
+  transform-origin: top;
+  /* Expand away to the bottom */
+}
+
+/* Hover effect to trigger the animations */
+.feature-box:hover::before {
+  transform: scaleX(1);
+  /* Expand bottom border */
+}
+
+.feature-box:hover::after {
+  transform: scaleY(1);
+  /* Expand left border */
+}
+
+.feature-box:hover span::before {
+  transform: scaleX(1);
+  /* Expand top border */
+}
+
+.feature-box:hover span::after {
+  transform: scaleY(1);
+  /* Expand right border */
+}
+
+@keyframes play {
+  0% {
+    scale: 100%;
+  }
+
+  50% {
+    scale: 125%;
+  }
+
+  100% {
+    scale: 100%;
+  }
+}
+
+.animate-play {
+  animation: play 2.5s ease-in-out 0.5s infinite;
+}
+
+
+
+
+
+.price-head {
+  background-image: url("../public/ramadan/tag2.png");
+  /* background-color: transparent; */
+  background-size: 100% auto;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  border: medium none;
+  border-radius: 0;
+  color: #6c5624;
+  display: table;
+  float: none;
+  font-size: 20px;
+  height: 200px;
+  margin: 0 auto -55px;
+  position: relative;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  width: 190px;
+  z-index: 9;
+  padding-top: 100px;
+}
+
+
+.package-section .package-info {
+  /* background-color: #d7bf91; */
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  margin: 0;
+  padding: 35px 0 0;
+}
+
+.package-details {
+  border: 1px solid #e5e7eb;
+}
+
+.price-head h2 {
+  color: #1a8acb;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.price-head span{
+  color: #1a8acb;
+}
+
+.days-info {
+  background-color: #c2e9ff;
+}
+
+.days-info h3 {
+  font-size: 16px;
+  color: #000;
+  /* font-weight: 600; */
+}
+
+.package-date h4{
+  color: #666;
+  font-weight: 600;
+}
+
+.package-hotels{
+  /* background-color: #c2e9ff42; */
+  border-top: 1px solid #e5e7eb;;
+}
+.package-hotels p{
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+.package-hotels .makkah-hotel .makkah_icon{
+  width: 20px;
+}
+.package-hotels .makkah-hotel .madinah_icon{
+  width: 20px;
+  height: 25px;
+}
+.makkah-hotel h3{
+  color:#666;
+  font-size: 16px;
+  font-weight: 600;
+}
+.package-hotels .makkah h2{
+  color:#1a8acb;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.package-hotels .madinah h2{
+  color:#1a8acb;
+  font-size: 16px;
+  font-weight: 600;
+}
+.view-package-btn{
+  background-color: #1a8acb;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+.book-now-btn{
+  background-color: #b78738;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+
+}
+/* Custom Tab Styles */
+.text-blue{
+  background-color: #1a8acb;
+  color: #fff !important;
+}
+.text-blue:hover{
+  color: #fff !important;
+}
+.border-blue{
+  color: #1a8acb;
+  border-bottom: 2px solid #1a8acb;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+
+
+/* package-details */
+.package-tab-btn{
+  padding: 28px 25px 28px;
+}
